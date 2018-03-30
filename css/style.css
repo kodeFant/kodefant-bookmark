@@ -1,0 +1,15 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+#main {
+  max-width: 500px;
+}
+
+.bm-item {
+  list-style-type: none;
+}
+.bm-item:hover {
+  background-color: greenyellow;
+}
