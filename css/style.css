@@ -1,15 +1,38 @@
+:root {
+  --lightgreen: rgb(193, 250, 154);
+  --ink: rgb(37, 37, 37);
+}
+
+body {
+  color: var(--ink);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 body {
   padding-top: 40px;
   padding-bottom: 50px;
 }
 
 #main {
-  max-width: 500px;
+  max-width: 400px;
 }
 
 .bm-item {
   list-style-type: none;
 }
 .bm-item:hover {
-  background-color: greenyellow;
+  background-color: var(--lightgreen);
+  border-radius: 0.1em;
+  border: dotted 1px;
+}
+
+.bmLink div {
+    font-size: 1.1em;
+}
+
+.hidden {
+  display: none;
 }

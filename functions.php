@@ -19,6 +19,7 @@ function redirect($location)
 function bmAdd() {
     global $connection;
     $bmName = $_POST['name'];
+    
     $bmURL = $_POST['url'];
     echo "{$bmName}: {$bmURL} ";
 
