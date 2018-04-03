@@ -23,15 +23,29 @@ if(isset($_GET['id'])) {
     redirect("/");
   }
 }
+
+
+/*   function get_title($url) {
+  $str = file_get_contents($url);
+  if (strlen($str) > 0) {
+    $str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
+    preg_match("/\<title\>(.*)\<\/title\>/i", $str, $title); // ignore case
+    return $title[1];
+  }
+}
+echo get_title("http://www.washingtontimes.com/"); */
+
 ?>
 <div id="main" class="container">
   <h2>Add bookmark</h2>
   <form class="form-group" id="bmInsert" action="" method="POST">
 
-    <input class="form-control" type="text" name="name" id="name" placeholder="Name your bookmark" required>
+    <input class="form-control" type="text" name="name" id="name" placeholder="Name your bookmark" value="<?php if(isset($_GET['title'])) { echo $_GET['title']; } ?>"
+      required>
     <br>
     <div class="input-group">
-      <input type="text" class="form-control" type="url" name="url" id="url" placeholder="http://" required aria-describedby="basic-addon2">
+      <input type="text" class="form-control" type="url" name="url" id="url" placeholder="http://" value="<?php if (isset($_GET['addBM'])) {echo $_GET['addBM']; } ?>"
+        required aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn btn-outline-success" type="submit" name="submit">Add Bookmark</button>
       </div>
@@ -40,7 +54,7 @@ if(isset($_GET['id'])) {
   </form>
   <div>
     <h2>Bookmarks</h2>
-    <ul class="list-group">
+    <ul id="bmList" class="list-group">
       <?php 
     $query = "SELECT * FROM bookmarks ORDER BY count DESC, id";
     $bmSelect = mysqli_query($connection, $query);
@@ -50,22 +64,34 @@ if(isset($_GET['id'])) {
       $bmID = $row['id'];
       $bmCount = $row['count'];
       ?>
-      <li class='bm-item'>
-        <div class='row'>
+      <li id="<?php echo $bmID ?>" class='bm-item'>
+        <div class='row bm-row'>
           <div class='col-10 text-left'>
             <a class='bmLink' href='/?url=<?php echo $bmURL; ?>&id=<?php echo $bmID; ?>' target='_blank'>
-              <div><img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt=""> <?php echo $bmName; ?></div>
+              <div class="entry">
+                <img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt="">
+                <span class="bm-name">
+                  <?php echo $bmName; ?>
+                </span>
+              </div>
             </a>
           </div>
           <div class='text-right col-2'>
-            <img src='images/caret-left.svg' width='15px' height='15px'>
+
+            <img class="caret" data-editbm="<?php echo $bmID ?>" src='images/caret-left.svg' width='18px' height='18px'>
+
           </div>
-          <div class="col-12 hidden"><a href="">Edit</a> <a href="?delete&id=<?php echo $bmID; ?>">Delete</a> Count: <?php echo $bmCount; ?> (<a href="?reset&id=<?php echo $bmID ?>">reset count</a>)</div>
+          <div class="col-12 bmOptions hidden">
+            <a class="editButton" href="">Edit</a>
+            <a href="?delete&id=<?php echo $bmID; ?>">Delete</a> Count: <?php echo $bmCount; ?> (<a href="?reset&id=<?php echo $bmID ?>">reset count</a>) </div>
         </div>
+
       </li>
       <?php } ?>
     </ul>
   </div>
 </div>
+
+
 
 <?php include "includes/footer.php" ?>

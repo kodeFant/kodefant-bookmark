@@ -1,10 +1,12 @@
 :root {
   --lightgreen: rgb(193, 250, 154);
   --ink: rgb(37, 37, 37);
+  --background: white;
 }
 
 body {
   color: var(--ink);
+  background-color: var(--background);
 }
 
 a:hover {
@@ -23,16 +25,46 @@ body {
 .bm-item {
   list-style-type: none;
 }
-.bm-item:hover {
+
+.bmLink div {
+  font-size: 1.1em;
+}
+
+.bmOptions {
+  background-color: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.bm-row:hover {
   background-color: var(--lightgreen);
   border-radius: 0.1em;
   border: dotted 1px;
 }
 
-.bmLink div {
-    font-size: 1.1em;
+.caret.active {
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  -ms-transition: -ms-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  color: var(--ink);
 }
 
-.hidden {
-  display: none;
+.pulldown {
+  transform: rotate(-90deg);
+}
+
+.box {
+  border: 1px solid lightgray;
+  font-size: 1.1em;
+  background-color: lightblue;
+  border-radius: 0.3em;
+}
+
+.entry {
+  margin: 3px 0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
