@@ -3,9 +3,9 @@
 <?php 
 if(isset($_GET['id'])) {
   $clickID = $_GET['id'];
-  $clickURL = $_GET['url'];
 
   if(isset($_GET['url'])) {
+  $clickURL = $_GET['url'];
   $query = "UPDATE bookmarks SET count = count + 1 WHERE id = $clickID";
   $bm_count_query = mysqli_query($connection, $query);
   redirect($clickURL);
@@ -22,6 +22,15 @@ if(isset($_GET['id'])) {
     $bm_delete_query = mysqli_query($connection, $query);
     redirect("/");
   }
+
+  if (isset($_GET['edit'])) {
+    $editName = $_GET['editName'];
+    $editURL = $_GET['editURL'];
+    $query = "UPDATE bookmarks SET name = '{$editName}', url = '{$editURL}' WHERE id = $clickID";
+    $bm_edit_query = mysqli_query($connection, $query);
+/*     redirect("/"); */
+  }
+
 }
 
 
@@ -36,6 +45,7 @@ if(isset($_GET['id'])) {
 echo get_title("http://www.washingtontimes.com/"); */
 
 ?>
+<script>let bmtoPHP = {};</script>
 <div id="main" class="container">
   <h2>Add bookmark</h2>
   <form class="form-group" id="bmInsert" action="" method="POST">
@@ -64,6 +74,13 @@ echo get_title("http://www.washingtontimes.com/"); */
       $bmID = $row['id'];
       $bmCount = $row['count'];
       ?>
+      <script>
+      bmtoPHP[<?php echo $bmID; ?>] = {
+              name: '<?php echo $bmName; ?>',
+              url: '<?php echo $bmURL; ?>',
+              id: '<?php echo $bmID; ?>',
+            };
+      </script>
       <li id="<?php echo $bmID ?>" class='bm-item'>
         <div class='row bm-row'>
           <div class='col-10 text-left'>
@@ -91,6 +108,7 @@ echo get_title("http://www.washingtontimes.com/"); */
     </ul>
   </div>
 </div>
+
 
 
 

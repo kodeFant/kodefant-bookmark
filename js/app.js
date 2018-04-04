@@ -19,15 +19,16 @@ const bmLink = $('.bmLink');
 //Selects all carets
 const allCarets = $('.caret');
 // Select url input
-const urlInput = document.querySelector('#url');
+const urlInput = $('#url')[0];
 // Select bookmark title  input
-const bmTitleInput = document.querySelector('#name');
+const bmTitleInput = $('#name')[0];
 // Select Edit buttons
 const editButtons = $('.editButton');
 // Select UL
-const bmUL = document.querySelector('#bmList');
+const bmUL = $('#bmList')[0];
 // Select all list items
 const bmLIs = $('li');
+//
 
 // Adds click listener to all bookmark links
 for (i = 0; i < bmLink.length; i++){
@@ -37,6 +38,16 @@ bmLink[i].addEventListener('click', () => {
   })
 };
 
+function createEditForm (id, selector) {
+  form = document.createElement("form");
+  form.classList.add("form-group");
+  form.innerHTML = `<input type="hidden" name="id" value="${bmtoPHP[id].id}"><input class="form-control" name="editName" value="${bmtoPHP[id].name}" type="text"><input class="form-control" type="text" name="editURL" value="${bmtoPHP[id].url}" ><button class="btn btn-warning" name="edit" type="submit">Update</button>`;
+  let inputs = selector.querySelector('.bmOptions').appendChild(form);
+}
+
+function deleteEditForm(selector) {
+  let inputs = selector.querySelector('.bmOptions').removeChild(form);
+}
 
 for (i = 0; i < allCarets.length;i++) {
   const caret = allCarets[i];
@@ -47,18 +58,25 @@ for (i = 0; i < allCarets.length;i++) {
       closeAllCarets();
     } else {
     closeAllCarets();
+
     caret.classList.toggle('pulldown');
     parentLI.querySelector('.bm-row').classList.toggle("box");
     parentLI.querySelector('.bmOptions').classList.toggle('hidden');
+    createEditForm(bmID, parentLI);
     }
   });
 };
 
 function closeAllCarets() {
   for (i = 0; i < bmLIs.length; i++) {
+    if (bmLIs[i].querySelector('form') !== null) {
+      deleteEditForm(bmLIs[i])
+    };
     allCarets[i].classList.remove('pulldown');
     bmLIs[i].querySelector('.bm-row').classList.remove("box");
-    bmLIs[i].querySelector('.bmOptions').classList.add('hidden')
+    bmLIs[i].querySelector('.bmOptions').classList.add('hidden');
+    allCarets[i].classList.remove('active');
+
   };
 };
 

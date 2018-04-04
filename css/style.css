@@ -44,7 +44,7 @@ body {
   border: dotted 1px;
 }
 
-.caret.active {
+.caret {
   -webkit-transition: -webkit-transform 0.2s ease-in;
   -ms-transition: -ms-transform 0.2s ease-in;
   transition: transform 0.2s ease-in;
