@@ -41,7 +41,25 @@ bmLink[i].addEventListener('click', () => {
 function createEditForm (id, selector) {
   form = document.createElement("form");
   form.classList.add("form-group");
-  form.innerHTML = `<input type="hidden" name="id" value="${bmtoPHP[id].id}"><input class="form-control" name="editName" value="${bmtoPHP[id].name}" type="text"><input class="form-control" type="text" name="editURL" value="${bmtoPHP[id].url}" ><button class="btn btn-warning" name="edit" type="submit">Update</button>`;
+// Cloning, deleting and readding name
+/*   const link = selector.querySelector('.bmLinkParent');
+  const linkClone = selector.querySelector('.bmLink').cloneNode(true);
+  link.innerHTML = '';
+  link.appendChild(linkClone);
+  console.log(link);
+  console.log(linkClone); */
+  form.innerHTML = `<input type="hidden" name="id" value="${bmtoPHP[id].id}">
+                    <div class = "form-group">
+                    <label for="editName">Edit name:</label>
+                    <input class="form-control" name="editName" value="${bmtoPHP[id].name}" type="text">
+                    </div>
+                    <div class = "form-group">
+                    <label for="editURL">Edit URL:</label>
+                    <input class="form-control" type="text" name="editURL" value="${bmtoPHP[id].url}" >
+                    </div>
+                    <div class = "form-group">
+                    <button class="btn btn-warning" name="edit" type="submit">Update</button>
+                    </div>`;
   let inputs = selector.querySelector('.bmOptions').appendChild(form);
 }
 

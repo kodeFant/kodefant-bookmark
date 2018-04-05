@@ -83,7 +83,7 @@ echo get_title("http://www.washingtontimes.com/"); */
       </script>
       <li id="<?php echo $bmID ?>" class='bm-item'>
         <div class='row bm-row'>
-          <div class='col-10 text-left'>
+          <div class='col-10 text-left bmLinkParent'>
             <a class='bmLink' href='/?url=<?php echo $bmURL; ?>&id=<?php echo $bmID; ?>' target='_blank'>
               <div class="entry">
                 <img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt="">
@@ -100,7 +100,7 @@ echo get_title("http://www.washingtontimes.com/"); */
           </div>
           <div class="col-12 bmOptions hidden">
             <a class="editButton" href="">Edit</a>
-            <a href="?delete&id=<?php echo $bmID; ?>">Delete</a> Count: <?php echo $bmCount; ?> (<a href="?reset&id=<?php echo $bmID ?>">reset count</a>) </div>
+            <a class="deleteButton" href="?delete&id=<?php echo $bmID; ?>">Delete</a> Count: <?php echo $bmCount; ?> (<a href="?reset&id=<?php echo $bmID ?>">reset count</a>) </div>
         </div>
 
       </li>

@@ -38,10 +38,15 @@ body {
   display: none;
 }
 
+.bm-row {
+  border: solid 1px transparent;
+  border-radius: 0.1em;
+}
+
 .bm-row:hover {
   background-color: var(--lightgreen);
-  border-radius: 0.1em;
-  border: dotted 1px;
+  border-radius: 0.2em;
+  border: solid 1px;
 }
 
 .caret {
