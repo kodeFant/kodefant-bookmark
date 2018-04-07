@@ -46,7 +46,11 @@ body {
 .bm-row:hover {
   background-color: var(--lightgreen);
   border-radius: 0.2em;
-  border: solid 1px;
+  border: solid 1px transparent;
+  -webkit-transition:background-color 0.3s ease-in-out;
+  -moz-transition:background-color 0.3s ease-in-out;
+  -o-transition:background-color 0.3s ease-in-out;
+  transition:background-color 0.3s ease-in-out;
 }
 
 .caret {
@@ -62,9 +66,18 @@ body {
 
 .box {
   border: 1px solid lightgray;
-  font-size: 1.1em;
+
   background-color: lightblue;
   border-radius: 0.3em;
+    -webkit-transition:background-color 0.3s ease-in-out;
+    -moz-transition:background-color 0.3s ease-in-out;
+    -o-transition:background-color 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+.box .bm-name {
+  font-size: 1.1em;
+  transition: transform 0.2s;
 }
 
 .entry {

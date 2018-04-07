@@ -28,7 +28,7 @@ if(isset($_GET['id'])) {
     $editURL = $_GET['editURL'];
     $query = "UPDATE bookmarks SET name = '{$editName}', url = '{$editURL}' WHERE id = $clickID";
     $bm_edit_query = mysqli_query($connection, $query);
-/*     redirect("/"); */
+    redirect("/");
   }
 
 }
@@ -45,7 +45,9 @@ if(isset($_GET['id'])) {
 echo get_title("http://www.washingtontimes.com/"); */
 
 ?>
-<script>let bmtoPHP = {};</script>
+<script>
+  let bmtoPHP = {};
+</script>
 <div id="main" class="container">
   <h2>Add bookmark</h2>
   <form class="form-group" id="bmInsert" action="" method="POST">
@@ -71,17 +73,19 @@ echo get_title("http://www.washingtontimes.com/"); */
     while ($row = mysqli_fetch_assoc($bmSelect)) {
       $bmName = $row['name'];
       $bmURL = $row['url'];
+      $bmURL = urlencode($bmURL);
       $bmID = $row['id'];
       $bmCount = $row['count'];
       ?>
       <script>
-      bmtoPHP[<?php echo $bmID; ?>] = {
-              name: '<?php echo $bmName; ?>',
-              url: '<?php echo $bmURL; ?>',
-              id: '<?php echo $bmID; ?>',
-            };
+        bmtoPHP[<?php echo $bmID; ?>] = {
+          name: '<?php echo $bmName; ?>',
+          url: '<?php echo urldecode($bmURL); ?>',
+          id: '<?php echo $bmID; ?>',
+          count: '<?php echo $bmCount; ?>'
+        };
       </script>
-      <li id="<?php echo $bmID ?>" class='bm-item'>
+      <li id="<?php echo $bmID ?>" class='bm-item'><form class="bmOptionsForm">
         <div class='row bm-row'>
           <div class='col-10 text-left bmLinkParent'>
             <a class='bmLink' href='/?url=<?php echo $bmURL; ?>&id=<?php echo $bmID; ?>' target='_blank'>
@@ -98,12 +102,16 @@ echo get_title("http://www.washingtontimes.com/"); */
             <img class="caret" data-editbm="<?php echo $bmID ?>" src='images/caret-left.svg' width='18px' height='18px'>
 
           </div>
-          <div class="col-12 bmOptions hidden">
-            <a class="editButton" href="">Edit</a>
-            <a class="deleteButton" href="?delete&id=<?php echo $bmID; ?>">Delete</a> Count: <?php echo $bmCount; ?> (<a href="?reset&id=<?php echo $bmID ?>">reset count</a>) </div>
+          
+            <div class="col-12 bmOptions hidden">
+              
+              
+            </div>
+            
+          
         </div>
 
-      </li>
+      </form></li>
       <?php } ?>
     </ul>
   </div>
