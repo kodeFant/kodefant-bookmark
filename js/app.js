@@ -14,6 +14,11 @@ NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn
     elem.on(name, fn);
   });
 }
+
+
+
+
+
 /*************/
 /* Variables */
 /*************/
@@ -30,6 +35,9 @@ const bmUL = $('#bmList')[0];
 // Select all list items
 const bmLIs = $('li');
 
+/**********/
+/* EVENTS */
+/**********/
 // Adds click listener to all bookmark links
 for (i = 0; i < bmLink.length; i++) {
   bmLink[i].addEventListener('click', () => {
@@ -38,19 +46,34 @@ for (i = 0; i < bmLink.length; i++) {
   })
 };
 
-// Menu with link edit options
+// Adds click listener to bookmark menu arrow (caret)
+for (i = 0; i < allCarets.length; i++) {
+  const caret = allCarets[i];
+  const bmID = caret.getAttribute('data-editbm');
+  const parentLI = bmLIs[i];
+  caret.addEventListener('click', () => {
+    if (caret.classList.contains('pulldown')) {
+      closeAllCarets();
+    } else {
+      closeAllCarets();
+
+      caret.classList.toggle('pulldown');
+      parentLI.querySelector('.bm-row').classList.toggle("box");
+      parentLI.querySelector('.bmOptions').classList.toggle('hidden');
+      createEditForm(bmID, parentLI);
+    }
+  });
+};
+
+/*************/
+/* FUNCTIONS */
+/*************/
+// Menu with bookmark edit options
 function createEditForm(id, selector) {
+  // Creating form data for editing chosen bookmark
   form = document.createElement("div");
   form.classList.add("theform");
-  // Cloning, deleting and readding name
-/*     link = selector.querySelector('.bmLink');
-    linkClone = selector.querySelector('.bmLink').cloneNode(true);
-    link.innerHTML = `<div class="input-group">
-  <span class="input-group-addon" id="sizing-addon2"><img src="http://www.google.com/s2/favicons?domain_url=${bmtoPHP[id].id}%2F" alt=""></span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
-</div>`;
-    link.appendChild(linkClone); */
-
+  // The HTML code inserted
   form.innerHTML =
     `<input type="hidden" name="id" value="${bmtoPHP[id].id}">
     <div class="form-group">
@@ -81,28 +104,14 @@ function createEditForm(id, selector) {
   const appendOptions = selector.querySelector('.bmOptions').appendChild(form);
 }
 
+// Close the bookmark edit options
+// Deletes the entire edit form when unselecting bookmark
 function deleteEditForm(selector) {
-  let inputs = selector.querySelector('.bmOptions').removeChild(form);
+  selector.querySelector('.bmOptions').removeChild(form);
 }
 
-for (i = 0; i < allCarets.length; i++) {
-  const caret = allCarets[i];
-  const bmID = caret.getAttribute('data-editbm');
-  const parentLI = bmLIs[i];
-  caret.addEventListener('click', () => {
-    if (caret.classList.contains('pulldown')) {
-      closeAllCarets();
-    } else {
-      closeAllCarets();
 
-      caret.classList.toggle('pulldown');
-      parentLI.querySelector('.bm-row').classList.toggle("box");
-      parentLI.querySelector('.bmOptions').classList.toggle('hidden');
-      createEditForm(bmID, parentLI);
-    }
-  });
-};
-
+// Closes/unselects all carets
 function closeAllCarets() {
   for (i = 0; i < bmLIs.length; i++) {
     if (bmLIs[i].querySelector('.theform') !== null) {
@@ -115,3 +124,23 @@ function closeAllCarets() {
 
   };
 };
+
+// Filter table
+function filterTable() {
+  // Declare variables
+  var input, filter, ul, li, a, i;
+  input = document.getElementById('bmSearch');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("bmList");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}

@@ -33,7 +33,6 @@ if(isset($_GET['id'])) {
 
 }
 
-
 /*   function get_title($url) {
   $str = file_get_contents($url);
   if (strlen($str) > 0) {
@@ -66,6 +65,7 @@ echo get_title("http://www.washingtontimes.com/"); */
   </form>
   <div>
     <h2>Bookmarks</h2>
+    <input type="text" class="form-control" id="bmSearch" onkeyup="filterTable()" placeholder="Search bookmarks">
     <ul id="bmList" class="list-group">
       <?php 
     $query = "SELECT * FROM bookmarks ORDER BY count DESC, id";
