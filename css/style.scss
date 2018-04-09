@@ -1,9 +1,10 @@
 :root {
-  --lightgreen: #c1fa9a;
-  --ink: #252525;
+  --lightgreen: rgb(193, 250, 154);
+  --ink: rgb(37, 37, 37);
   --background: white;
-  --bm_orange: #ffcf7d;
+  --bm_orange: rgb(255, 207, 125);
 }
+
 
 body {
   color: var(--ink);
@@ -93,7 +94,7 @@ body {
 }
 
 #myInput {
-  background-image: url("/css/searchicon.png");
+  background-image: url('/css/searchicon.png');
   /* Add a search icon to input */
   background-position: 10px 12px;
   /* Position the search icon */
@@ -110,4 +111,3 @@ body {
   margin-bottom: 12px;
   /* Add some space below the input */
 }
-/*# sourceMappingURL=style.css.map */
