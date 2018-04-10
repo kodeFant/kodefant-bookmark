@@ -1,49 +1,45 @@
 /* Variables */
-  $green: rgb(232, 255, 215);
-  $ink: rgb(37, 37, 37);
-  $background: rgb(255,255,255);
-  $orange: rgb(255, 207, 125);
 
-  @mixin background-transition($time) {
-    -webkit-transition: background-color $time ease-in-out;
-    -moz-transition: background-color $time ease-in-out;
-    -o-transition: background-color $time ease-in-out;
-    transition: background-color $time ease-in-out;
-  }
-
-body {
-  color: $ink;
-  background-color: $background;
-  padding-top: 40px;
-  padding-bottom: 50px;
+$green: rgb(232, 255, 215);
+$ink: rgb(37, 37, 37);
+$background: rgb(212, 233, 243);
+$orange: rgb(255, 207, 125);
+$hoverback: rgb(232, 255, 215);
+@mixin background-transition($time) {
+  -webkit-transition: background-color $time ease-in-out;
+  -moz-transition: background-color $time ease-in-out;
+  -o-transition: background-color $time ease-in-out;
+  transition: background-color $time ease-in-out;
 }
 
-a:hover {
-  text-decoration: none;
+body {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: $ink;
+  background-color: $background;
+  padding: {
+    top: 20px;
+    bottom: 20px;
+  }
+}
+
+a {
+  color: rgb(77, 103, 143);
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 /* Classes */
 
 .bm-item {
+  // List item style
   // Removes bullet decoration on list items
   list-style-type: none;
-}
-
-.bmLink div {
   font-size: 1.1em;
-}
-
-.bmOptions {
-  background-color: none;
-}
-
+} // Hide element
 .hidden {
   display: none;
-}
-
-.bm-row {
-  border: solid 1px transparent;
-  border-radius: 0.1em;
 }
 
 .caret {
@@ -59,15 +55,15 @@ a:hover {
 
 .box {
   border: 1px solid lightgray;
-  background-color: lightblue;
+  background-color: $hoverback;
   border-radius: 0.3em;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  -moz-transition: background-color 0.3s ease-in-out;
-  -o-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
-  .bm-name {
-  font-size: 1.1em;
+  @include background-transition(0.3s);
   transition: transform 0.2s;
+  -webkit-box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
+  .bm-name {
+    font-size: 1.1em;
   }
 }
 
@@ -76,6 +72,7 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-style: 1.1em;
 }
 
 .btn.btn-warning {
@@ -84,31 +81,37 @@ a:hover {
 }
 
 #main {
+  height: 90vh;
+  overflow:scroll;
   max-width: 400px;
+  border: 1px gray solid;
+  background-color: white;
+  padding: 30px;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
 }
 
-#bmList li:hover {
-  background-color: $green;
-  border-radius: 0.2em;
-  border: solid 1px transparent;
-  @include background-transition(0.3s);
+#bmList {
+
+  li {
+    border-radius: 0.2em;
+    &:hover {
+      background-color: $green;
+      /*   border: solid 1px transparent; */
+      @include background-transition(0.3s);
+    }
+    margin-top: 5px;
+  }
 }
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  /* Add a search icon to input */
-  background-position: 10px 12px;
-  /* Position the search icon */
-  background-repeat: no-repeat;
-  /* Do not repeat the icon image */
+#bmSearch {
+  margin-bottom: 16px;
+  font-size: 1.6em;
+  padding: 7px;
+  ;
+  margin: 0 auto;
+  margin-bottom: 20px;
   width: 100%;
-  /* Full-width */
-  font-size: 16px;
-  /* Increase font-size */
-  padding: 12px 20px 12px 40px;
-  /* Add some padding */
-  border: 1px solid #ddd;
-  /* Add a grey border */
-  margin-bottom: 12px;
-  /* Add some space below the input */
 }

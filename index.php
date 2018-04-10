@@ -64,7 +64,6 @@ echo get_title("http://www.washingtontimes.com/"); */
     <br>
   </form>
   <div>
-    <h2>Bookmarks</h2>
     <input type="text" class="form-control" id="bmSearch" onkeyup="filterTable()" placeholder="Search bookmarks">
     <ul id="bmList" class="list-group">
       <?php 
@@ -90,9 +89,8 @@ echo get_title("http://www.washingtontimes.com/"); */
           <div class='col-10 text-left bmLinkParent'>
             <a class='bmLink' href='/?url=<?php echo $bmURL; ?>&id=<?php echo $bmID; ?>' target='_blank'>
               <div class="entry">
-                <img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt="">
-                <span class="bm-name">
-                  <?php echo $bmName; ?>
+                <img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt=""> 
+                <span class="bm-name">&nbsp;<?php echo $bmName; ?>
                 </span>
               </div>
             </a>

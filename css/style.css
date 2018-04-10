@@ -1,9 +1,15 @@
 /* Variables */
 body {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
   color: #252525;
-  background-color: white;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  background-color: #d4e9f3;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+a {
+  color: #4d678f;
 }
 
 a:hover {
@@ -13,23 +19,11 @@ a:hover {
 /* Classes */
 .bm-item {
   list-style-type: none;
-}
-
-.bmLink div {
   font-size: 1.1em;
-}
-
-.bmOptions {
-  background-color: none;
 }
 
 .hidden {
   display: none;
-}
-
-.bm-row {
-  border: solid 1px transparent;
-  border-radius: 0.1em;
 }
 
 .caret {
@@ -45,17 +39,20 @@ a:hover {
 
 .box {
   border: 1px solid lightgray;
-  background-color: lightblue;
+  background-color: #e8ffd7;
   border-radius: 0.3em;
   -webkit-transition: background-color 0.3s ease-in-out;
   -moz-transition: background-color 0.3s ease-in-out;
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
+  transition: transform 0.2s;
+  -webkit-box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 18px 0px rgba(0, 0, 0, 0.75);
 }
 
 .box .bm-name {
   font-size: 1.1em;
-  transition: transform 0.2s;
 }
 
 .entry {
@@ -63,6 +60,7 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-style: 1.1em;
 }
 
 .btn.btn-warning {
@@ -71,35 +69,38 @@ a:hover {
 }
 
 #main {
+  height: 90vh;
+  overflow: scroll;
   max-width: 400px;
+  border: 1px gray solid;
+  background-color: white;
+  padding: 30px;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+}
+
+#bmList li {
+  border-radius: 0.2em;
+  margin-top: 5px;
 }
 
 #bmList li:hover {
   background-color: #e8ffd7;
-  border-radius: 0.2em;
-  border: solid 1px transparent;
+  /*   border: solid 1px transparent; */
   -webkit-transition: background-color 0.3s ease-in-out;
   -moz-transition: background-color 0.3s ease-in-out;
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
 
-#myInput {
-  background-image: url("/css/searchicon.png");
-  /* Add a search icon to input */
-  background-position: 10px 12px;
-  /* Position the search icon */
-  background-repeat: no-repeat;
-  /* Do not repeat the icon image */
+#bmSearch {
+  margin-bottom: 16px;
+  font-size: 1.6em;
+  padding: 7px;
+  margin: 0 auto;
+  margin-bottom: 20px;
   width: 100%;
-  /* Full-width */
-  font-size: 16px;
-  /* Increase font-size */
-  padding: 12px 20px 12px 40px;
-  /* Add some padding */
-  border: 1px solid #ddd;
-  /* Add a grey border */
-  margin-bottom: 12px;
-  /* Add some space below the input */
 }
 /*# sourceMappingURL=style.css.map */
