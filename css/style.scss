@@ -13,7 +13,6 @@ $hoverback: rgb(232, 255, 215);
 }
 
 body {
-  height: 100vh;
   font-family: 'Roboto', sans-serif;
   color: $ink;
   background-color: $background;
@@ -81,16 +80,14 @@ a {
 }
 
 #main {
-  height: 90vh;
-  overflow:scroll;
   max-width: 400px;
   border: 1px gray solid;
   background-color: white;
   padding: 30px;
   border-radius: 0.5em;
-  -webkit-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 7px 7px 26px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+  box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
 }
 
 #bmList {
