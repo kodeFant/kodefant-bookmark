@@ -1,28 +1,16 @@
-:root {
-  --lightgreen: #c1fa9a;
-  --ink: #252525;
-  --background: white;
-  --bm_orange: #ffcf7d;
-}
-
+/* Variables */
 body {
-  color: var(--ink);
-  background-color: var(--background);
+  color: #252525;
+  background-color: white;
+  padding-top: 40px;
+  padding-bottom: 50px;
 }
 
 a:hover {
   text-decoration: none;
 }
 
-body {
-  padding-top: 40px;
-  padding-bottom: 50px;
-}
-
-#main {
-  max-width: 400px;
-}
-
+/* Classes */
 .bm-item {
   list-style-type: none;
 }
@@ -44,21 +32,11 @@ body {
   border-radius: 0.1em;
 }
 
-.bm-row:hover {
-  background-color: var(--lightgreen);
-  border-radius: 0.2em;
-  border: solid 1px transparent;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  -moz-transition: background-color 0.3s ease-in-out;
-  -o-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
-}
-
 .caret {
   -webkit-transition: -webkit-transform 0.2s ease-in;
   -ms-transition: -ms-transform 0.2s ease-in;
   transition: transform 0.2s ease-in;
-  color: var(--ink);
+  color: #252525;
 }
 
 .pulldown {
@@ -88,8 +66,22 @@ body {
 }
 
 .btn.btn-warning {
-  background-color: var(--bm_orange);
+  background-color: #ffcf7d;
   border-color: #edcb82;
+}
+
+#main {
+  max-width: 400px;
+}
+
+#bmList li:hover {
+  background-color: #e8ffd7;
+  border-radius: 0.2em;
+  border: solid 1px transparent;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 #myInput {

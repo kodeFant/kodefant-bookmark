@@ -81,12 +81,12 @@ function createEditForm(id, selector) {
       <input class="form-control" type="text" name="editURL" value="${bmtoPHP[id].url}" >
     </div>
     <div class="row">
-      <div class="col-4 form-group">
+      <div class="col-3 form-group">
         <button class="btn btn-sm btn-warning" name="edit" type="submit">
           Update
         </button>
       </div>
-      <div class="col-8 form-group text-right">
+      <div class="col-9 form-group text-right">
           <a class="btn btn-info btn-sm" href="?reset&id=${bmtoPHP[id].id}">
             Reset count (${bmtoPHP[id].count})
           </a>
