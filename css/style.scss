@@ -1,6 +1,7 @@
 /* Variables */
 
-$green: rgb(232, 255, 215);
+
+$listhover: rgb(232, 255, 215);
 $ink: rgb(37, 37, 37);
 $background: rgb(212, 233, 243);
 $orange: rgb(255, 207, 125);
@@ -17,9 +18,13 @@ body {
   color: $ink;
   background-color: $background;
   padding: {
-    top: 20px;
+    top: 70px;
     bottom: 20px;
   }
+}
+
+nav {
+  margin-bottom: 20px;
 }
 
 a {
@@ -52,6 +57,7 @@ a {
   transform: rotate(-90deg);
 }
 
+// Body of edit box
 .box {
   border: 1px solid lightgray;
   background-color: $hoverback;
@@ -94,8 +100,11 @@ a {
 
   li {
     border-radius: 0.2em;
+      margin-left: -5px;
+      margin-right: -5px;
     &:hover {
-      background-color: $green;
+      background-color: $listhover;
+
       /*   border: solid 1px transparent; */
       @include background-transition(0.3s);
     }
@@ -111,4 +120,15 @@ a {
   margin: 0 auto;
   margin-bottom: 20px;
   width: 100%;
+}
+
+#nav {
+      border-bottom: 1px gray solid;
+      background-color: white;
+      /* border-radius: 0.5em; */
+
+      -webkit-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+      -moz-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+      box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+      padding: 1px 7px;
 }

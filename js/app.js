@@ -29,7 +29,15 @@ const bmTitleInput = $('#name')[0];
 // Select UL
 const bmUL = $('#bmList')[0];
 // Select all list items
-const bmLIs = $('li');
+const bmLIs = $('#bmList li')
+// Add Bookmark link
+const bmAddLink = $('#bmAddLink')[0];
+// 
+const bmInsert = $('#bmInsert')[0];
+
+bmAddLink.addEventListener('click', () => {
+  bmInsert.classList.toggle('hidden');
+});
 
 /**********/
 /* EVENTS */
@@ -38,7 +46,10 @@ const bmLIs = $('li');
 for (i = 0; i < bmLink.length; i++) {
   bmLink[i].addEventListener('click', () => {
     // Reloads when link is loaded
-    window.location.reload(true);
+   setTimeout(function () {
+     window.location.reload(true);
+   }, 1000);
+   
   })
 };
 

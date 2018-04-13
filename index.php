@@ -48,9 +48,9 @@ echo get_title("http://www.washingtontimes.com/"); */
   let bmtoPHP = {};
 </script>
 <div id="main" class="container">
-  <h2>Add bookmark</h2>
-  <form class="form-group" id="bmInsert" action="" method="POST">
-
+  
+  <form class="form-group <?php if (isset($_GET['addBM'])) { } else { echo "hidden"; } ?>" id="bmInsert" action="" method="POST">
+<h2>Add a bookmark</h2>
     <input class="form-control" type="text" name="name" id="name" placeholder="Name your bookmark" value="<?php if(isset($_GET['title'])) { echo $_GET['title']; } ?>"
       required>
     <br>
@@ -89,13 +89,13 @@ echo get_title("http://www.washingtontimes.com/"); */
           <div class='col-10 text-left bmLinkParent'>
             <a class='bmLink' href='/?url=<?php echo $bmURL; ?>&id=<?php echo $bmID; ?>' target='_blank'>
               <div class="entry">
-                <img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt=""> 
+                <span><img src="http://www.google.com/s2/favicons?domain_url=<?php echo $bmURL; ?>%2F" alt=""></span>
                 <span class="bm-name">&nbsp;<?php echo $bmName; ?>
                 </span>
               </div>
             </a>
           </div>
-          <div class='text-right col-2'>
+          <div class='text-center col-2'>
 
             <img class="caret" data-editbm="<?php echo $bmID ?>" src='images/caret-left.svg' width='18px' height='18px'>
 
@@ -114,8 +114,6 @@ echo get_title("http://www.washingtontimes.com/"); */
     </ul>
   </div>
 </div>
-
-
 
 
 <?php include "includes/footer.php" ?>

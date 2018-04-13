@@ -3,8 +3,12 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #252525;
   background-color: #d4e9f3;
-  padding-top: 20px;
+  padding-top: 70px;
   padding-bottom: 20px;
+}
+
+nav {
+  margin-bottom: 20px;
 }
 
 a {
@@ -80,6 +84,8 @@ a:hover {
 
 #bmList li {
   border-radius: 0.2em;
+  margin-left: -5px;
+  margin-right: -5px;
   margin-top: 5px;
 }
 
@@ -92,6 +98,10 @@ a:hover {
   transition: background-color 0.3s ease-in-out;
 }
 
+#addBMdropdown {
+  width: 350px;
+}
+
 #bmSearch {
   margin-bottom: 16px;
   font-size: 1.6em;
@@ -99,5 +109,15 @@ a:hover {
   margin: 0 auto;
   margin-bottom: 20px;
   width: 100%;
+}
+
+#nav {
+  border-bottom: 1px gray solid;
+  background-color: white;
+  /* border-radius: 0.5em; */
+  -webkit-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+  box-shadow: 1.5px 1.5px 4px 0px rgba(0, 0, 0, 0.55);
+  padding: 1px 7px;
 }
 /*# sourceMappingURL=style.css.map */
